@@ -4,17 +4,19 @@ In the second part, I delve deeper into the customer onboarding process — from
 
 ## 2. Create Schema and Filter Data
 
-Before proceeding with this step, please refer to the Business Analyst's documentation ([Source_Target_Mapping](https://github.com/quachquoccuong2904/Customer-Journey/blob/main/CASE%202%20-%20METADATA%20MANAGEMENT%20AND%20DATA%20QUALITY/Source-Target_Mapping.xlsx)) to gain a clear understanding of the data creation and filtering process.
+Before proceeding with this step, please refer to the Business Analyst's documentation ([Source_Target_Mapping](https://github.com/quyda2004/Customer-Journey-/blob/main/CASE%202%20-%20METADATA%20MANAGEMENT%20AND%20DATA%20QUALITY/Source-Target_Mapping.xlsx)) to gain a clear understanding of the data creation and filtering process.
 
 ### 2.1. Create Schema for Staging Zone
 
-<img width="1117" height="644" alt="Image" src="https://github.com/user-attachments/assets/09d3061d-9f86-4686-acbb-0a1ab650e85f" />
+<img width="1010" height="583" alt="image" src="https://github.com/user-attachments/assets/75dbb17b-5708-4644-976b-813f67428bd7" />
+
 
 Data flow from the Source Layer into the Staging Zone, with the purpose of standardizing the data into a consistent state, making it easier for users to track the data flow.
 
 ### 2.2. Create Schema for Reconciliaton Zone
 
-<img width="1069" height="749" alt="Image" src="https://github.com/user-attachments/assets/c63ebfb4-b47a-47c7-a15e-176880259314" />
+<img width="1010" height="713" alt="image" src="https://github.com/user-attachments/assets/c65ecc7e-9feb-455d-98dc-19fd1b6c43e0" />
+
 
 At this layer, all data has been standardized and is ready for analytical use. To effectively support the customer journey, I need to design a suitable Data Warehouse layer that ensures scalability, fast data access, and accurate decision-making support:
 
@@ -42,19 +44,21 @@ In addition to tables with direct mappings (1-1 mapping), several other tables m
 
 To perform this step, I used an ETL tool - SQL Server Integration Services (SSIS) - within the Visual Studio environment.
 
-<img width="776" height="304" alt="Image" src="https://github.com/user-attachments/assets/d4a001f1-6c78-4d77-825d-1c42b7afe447" />
+<img width="782" height="311" alt="image" src="https://github.com/user-attachments/assets/81e11712-d549-4bc0-b971-10546be9bd3f" />
+
 
 Several issues were encountered during the process:
 
 **STAGING_Post_eKYC:**
 The `IS_KYC` column is currently in Unicode String format (DT_WSTR), whereas the destination requires it in String format (DT_STR). Therefore, a conversion step is necessary, using Code Page 1252 (ANSI - Latin I).
 
-<img width="303" height="280" alt="Image" src="https://github.com/user-attachments/assets/755c73c1-3508-4461-8c3f-729976d1ad7c" />
+<img width="299" height="277" alt="image" src="https://github.com/user-attachments/assets/f1903bf4-7452-49c1-98ff-55f43308ba3b" />
+
 
 **STAGING_Transactions:**
 The `Transaction_Range` column is currently in String format (DT_STR) at the Source, whereas the Destination requires it in Unicode String format (DT_WSTR). Therefore, a conversion step is necessary to ensure compatibility with the destination schema.
 
-<img width="317" height="253" alt="Image" src="https://github.com/user-attachments/assets/66b5df72-12fd-474f-b68a-acf8d680f4c7" />
+<img width="293" height="245" alt="image" src="https://github.com/user-attachments/assets/ef22d662-a163-4cc6-8d0f-713c2cf54a5a" />
 
 ## 4. Data Quality
 
@@ -70,9 +74,9 @@ To ensure the data is suitable for analysis, reporting, and prediction tasks, I 
     - **Create and query the `INFORMATION_SCHEMA`**: A set of system views that allow us to retrieve information about the database structure (e.g., number of columns, data types, etc.).
     - **Use SQL Server `CURSOR`**: Enables iteration through each row of data to check for validity or completeness based on custom logic.
 
-[Link to code](https://github.com/quachquoccuong2904/Customer-Journey/blob/main/CASE%202%20-%20METADATA%20MANAGEMENT%20AND%20DATA%20QUALITY/Data%20Quality/Completeness%20and%20Validity.sql)
+[Link to code](https://github.com/quyda2004/Customer-Journey-/blob/main/CASE%202%20-%20METADATA%20MANAGEMENT%20AND%20DATA%20QUALITY/Data%20Quality/Completeness%20and%20Validity.sql)
 
-<img width="1591" height="466" alt="Image" src="https://github.com/user-attachments/assets/e905dc3a-ca18-4874-a712-5fab820a3fdd" />
+<img width="1014" height="297" alt="image" src="https://github.com/user-attachments/assets/d9847a04-6dea-4ea0-88f3-810d1e91b64a" />
 
 ### 4.2. Accuracy:
 
@@ -89,7 +93,7 @@ To ensure the data is suitable for analysis, reporting, and prediction tasks, I 
     - IS_INFO_ALERT: Compare `OCR_Information` and `INPUT_Information` to detect any inconsistencies.
     - IS_CATEGORY_ALERT: Check whether any account category falls outside of the accepted values ‘1001’ and ‘1002’.
 
-[Link to code](https://github.com/quachquoccuong2904/Customer-Journey/blob/main/CASE%202%20-%20METADATA%20MANAGEMENT%20AND%20DATA%20QUALITY/Data%20Quality/Accuracy.sql)
+[Link to code](https://github.com/quyda2004/Customer-Journey-/blob/main/CASE%202%20-%20METADATA%20MANAGEMENT%20AND%20DATA%20QUALITY/Data%20Quality/Accuracy.sql)
 
 <img width="1402" height="390" alt="Image" src="https://github.com/user-attachments/assets/596b5a75-5af4-4f5f-b8d8-538e86739a1d" />
 
@@ -109,15 +113,15 @@ To ensure the data is suitable for analysis, reporting, and prediction tasks, I 
     - Determine the total number of fraudulent and risky transactions carried out during this gap period.
     - Measure the monetary value (or impact) of those risky and fraudulent transactions.
 
-[Link to code](https://github.com/quachquoccuong2904/Customer-Journey/blob/main/CASE%202%20-%20METADATA%20MANAGEMENT%20AND%20DATA%20QUALITY/Data%20Quality/Consistency.sql)
+[Link to code](https://github.com/quyda2004/Customer-Journey-/blob/main/CASE%202%20-%20METADATA%20MANAGEMENT%20AND%20DATA%20QUALITY/Data%20Quality/Consistency.sql)
 
 For the data obtained from the query above and using an Excel Pivot Table, we have the following report:
 
-<img width="690" height="228" alt="Image" src="https://github.com/user-attachments/assets/275808e3-9ea8-4b03-ae8d-19718dab8649" />
+<img width="694" height="231" alt="image" src="https://github.com/user-attachments/assets/7d206f6c-0f9e-4ed5-9336-e98151f7014a" />
 
-<img width="1298" height="991" alt="Image" src="https://github.com/user-attachments/assets/20f445f7-e73f-4f60-aa94-6e8d0e551b30" />
+<img width="1011" height="776" alt="image" src="https://github.com/user-attachments/assets/861c342c-23e0-425d-b7f7-e1c4c256147e" />
 
-<img width="1652" height="988" alt="Image" src="https://github.com/user-attachments/assets/54d40b8f-a545-415c-9f38-85ccbc416156" />
+<img width="1010" height="602" alt="image" src="https://github.com/user-attachments/assets/3cda9817-56b8-4def-b439-8d6442e43689" />
 
 **Remarks:**
 
