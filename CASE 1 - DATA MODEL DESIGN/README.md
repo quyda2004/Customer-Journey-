@@ -4,8 +4,8 @@ In this project, the bank is implementing a digital process for customers using 
 
 ## 2. Understand Onboarding Journey:
 
-<img width="1119" height="529" alt="Image" src="<img width="1008" height="478" alt="image" src="https://github.com/user-attachments/assets/ef242d3c-dd96-4762-80f7-8825fdf68699" />
-" />
+<img width="1008" height="478" alt="image" src="https://github.com/user-attachments/assets/ef242d3c-dd96-4762-80f7-8825fdf68699" />
+
 
 ### 2.1. Application Form: 
     
