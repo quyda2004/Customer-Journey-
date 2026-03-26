@@ -15,7 +15,8 @@ The customer begins by filling out an application form with their personal infor
 
 By executing the eKYC process, data will be collected and recorded into the data warehouse.
 
-<img width="1183" height="452" alt="Image" src="https://github.com/user-attachments/assets/c0c6bb4b-dd24-46b1-9cc5-b5993eae3bf1" />
+<img width="1009" height="385" alt="image" src="https://github.com/user-attachments/assets/03ab284a-f485-4041-af96-df264a09674b" />
+
 
 **Step 1: Identification:** 
 
